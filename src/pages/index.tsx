@@ -14,24 +14,24 @@ export default function MyBook(props: any) {
       minHeight={0}
       maxHeight={0}
       drawShadow={false}
-      flippingTime={0}
+      flippingTime={1000}
       usePortrait={false}
       startZIndex={0}
-      autoSize={true}
+      autoSize={false}
       maxShadowOpacity={0}
       showCover={false}
-      mobileScrollSupport={false}
-      clickEventForward={false}
-      useMouseEvents={false}
+      mobileScrollSupport={true}
+      clickEventForward={true}
+      useMouseEvents={true}
       swipeDistance={0}
-      showPageCorners={false}
+      showPageCorners={true}
       disableFlipByClick={false}
     >
       <div className="demoPage">
-        <video src="./1-1.mp4" autoPlay loop muted={true}></video>
+        <video src="./1-1.mp4" autoPlay loop muted></video>
       </div>
       <div className="demoPage">
-        <video src="./1-2.mp4" autoPlay loop muted={false}></video>
+        <video src="./1-2.mp4" autoPlay loop muted></video>
       </div>
       <div className="demoPage">
         <video src="./2-1.mp4" autoPlay loop muted></video>
