@@ -1,38 +1,33 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+영상들 곧 보내드릴 계획입니다.
 
-## Getting Started
+명세
 
-First, run the development server:
+1. 페이지 넘길 때 완전히 다음 페이지로 넘어갔을 때 다음 영상으로 소리 변경
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+2. 사용자는 왼쪽 페이지를 좌에서 우, 혹은 오른쪽 페이지를 우에서 좌로 터치로 슬라이드하여 현실에서 책 넘기는 동작과 같은 제스처를 취할 예정
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. 책 넘기는 소리는 사용자가 슬라이드하는 타이밍에 플레이(넘기는 척하다가 안넘길때도 플레이)
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+4. 각 페이지의 영상은 자동으로 반복재생. 영상이 3번 반복되어도 아무런 제스처가 없을땐 제일 첫번째 페이지로 넘어가기
+(이때는 굳이 책장넘기는 모션 없어도 됨. fade in - fade out으로 첫페이지로 넘어가기-다음 사용자를 위한 리셋임)
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+5. 페이지를 넘기면 항상 영상의 처음부터 시작
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+<!-- ================== -->
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1. 페이지 넘길 때 완전히 다음 페이지로 넘어갔을 때 다음 영상으로 소리 변경:
+react-pageflip은 페이지가 넘어갔을 때의 콜백을 제공합니다. 이 콜백을 사용하여 페이지가 완전히 넘어갔을 때 소리를 변경하는 로직을 추가할 수 있습니다.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+2. 사용자는 왼쪽 페이지를 좌에서 우, 혹은 오른쪽 페이지를 우에서 좌로 터치로 슬라이드하여 현실에서 책 넘기는 동작과 같은 제스처를 취할 예정:
+react-pageflip은 터치 제스처를 지원하므로 이 요구 사항은 충족됩니다.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. 책 넘기는 소리는 사용자가 슬라이드하는 타이밍에 플레이(넘기는 척하다가 안넘길때도 플레이):
+페이지를 넘기는 동안의 이벤트를 감지하여 소리를 재생하는 로직을 추가해야 합니다. 이는 라이브러리의 기본 기능이 아니므로 추가적인 구현이 필요합니다.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+4. 각 페이지의 영상은 자동으로 반복재생. 영상이 3번 반복되어도 아무런 제스처가 없을땐 제일 첫번째 페이지로 넘어가기:
+이 부분은 react-pageflip과 관련이 없습니다. 각 페이지의 영상을 <video> 태그로 임베드하고, 반복 재생 및 제스처 감지 로직을 추가하여 구현해야 합니다.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+5. 페이지를 넘기면 항상 영상의 처음부터 시작:
+페이지를 넘길 때의 콜백을 사용하여 영상을 재시작하는 로직을 추가할 수 있습니다.
+결론적으로, react-pageflip 라이브러리는 페이지 플립 애니메이션과 관련된 기능을 제공하지만, 사용자의 요구 사항 중 일부는 추가적인 구현이 필요합니다. 따라서 해당 라이브러리를 기반으로 사용자의 요구 사항을 만족시키기 위해 추가적인 로직을 구현해야 합니다.
