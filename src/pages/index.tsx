@@ -9,10 +9,10 @@ export default function MyBook(props: any) {
       style={{}}
       startPage={0}
       size={"fixed"}
-      minWidth={0}
-      maxWidth={0}
-      minHeight={0}
-      maxHeight={0}
+      minWidth={500}
+      maxWidth={1000}
+      minHeight={500}
+      maxHeight={1000}
       drawShadow={false}
       flippingTime={1000}
       usePortrait={false}
