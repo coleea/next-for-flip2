@@ -308,7 +308,7 @@ export default function MyBook({}) {
                 {/* 3 page */}
                 <div>
                   <video
-                    src="./1-1.mp4"
+                    src="./3-1.mp4"
                     loop
                     autoPlay={false}
                     muted={!(currentPage === 3)}
@@ -318,7 +318,7 @@ export default function MyBook({}) {
                 </div>
                 <div >
                   <video
-                    src="./1-2.mp4"
+                    src="./3-2.mp4"
                     loop
                     autoPlay={false}
                     muted
@@ -329,7 +329,7 @@ export default function MyBook({}) {
                 {/* 4 page */}
                 <div>
                   <video
-                    src="./2-1.mp4"
+                    src="./4-1.mp4"
                     loop
                     autoPlay={false}
                     muted={!(currentPage === 4)}
@@ -339,7 +339,7 @@ export default function MyBook({}) {
                 </div>
                 <div >
                   <video
-                    src="./2-2.mp4"
+                    src="./4-2.mp4"
                     loop
                     autoPlay={false}
                     muted
@@ -350,7 +350,7 @@ export default function MyBook({}) {
                 {/* 5 page */}
                 <div>
                   <video
-                    src="./1-1.mp4"
+                    src="./5-1.mp4"
                     loop
                     autoPlay={false}
                     muted={!(currentPage === 5)}
@@ -360,7 +360,7 @@ export default function MyBook({}) {
                 </div>
                 <div >
                   <video
-                    src="./1-2.mp4"
+                    src="./5-2.mp4"
                     loop
                     autoPlay={false}
                     muted
@@ -371,7 +371,7 @@ export default function MyBook({}) {
                 {/* 6 page */}
                 <div>
                   <video
-                    src="./2-1.mp4"
+                    src="./6-1.mp4"
                     loop
                     autoPlay={false}
                     muted={!(currentPage === 6)}
@@ -381,7 +381,7 @@ export default function MyBook({}) {
                 </div>
                 <div >
                   <video
-                    src="./2-2.mp4"
+                    src="./6-2.mp4"
                     loop
                     autoPlay={false}
                     muted
@@ -392,7 +392,7 @@ export default function MyBook({}) {
                 {/* 7 page */}
                 <div>
                   <video
-                    src="./1-1.mp4"
+                    src="./7-1.mp4"
                     loop
                     autoPlay={false}
                     muted={!(currentPage === 7)}
@@ -402,7 +402,7 @@ export default function MyBook({}) {
                 </div>
                 <div >
                   <video
-                    src="./1-2.mp4"
+                    src="./7-2.mp4"
                     loop
                     autoPlay={false}
                     muted
