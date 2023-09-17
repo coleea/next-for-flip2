@@ -22,20 +22,24 @@ export default function MyBook({}) {
   const [video4Ready, setVideo4Ready] = useState(false);
 
   useEffect(() => {
-    if(isFullscreen && window) {
-      if(window.outerWidth > window.outerHeight) {
-        setWidth(window.outerWidth)
-        setHeight(window.outerHeight)
-      } else {
-        setWidth(window.outerHeight)
-        setHeight(window.outerWidth)
+    
+    setTimeout(() => { 
+
+      if(isFullscreen && document.fullscreenElement && window) {
+        if(window.outerWidth > window.outerHeight) {
+          setWidth(window.outerWidth)
+          setHeight(window.outerHeight)
+        } else {
+          setWidth(window.outerHeight)
+          setHeight(window.outerWidth)
+        }
       }
-      
-    }
-    if(ref.current) {
-      // ref.current.requestFullscreen()
-      // Failed to execute 'requestFullscreen' on 'Element': API can only be initiated by a user gesture.
-    }
+      if(ref.current) {
+        // ref.current.requestFullscreen()
+        // Failed to execute 'requestFullscreen' on 'Element': API can only be initiated by a user gesture.
+      }
+
+    }, 500)
   }, [isFullscreen]);
 
   useEffect(() => {
@@ -71,11 +75,8 @@ export default function MyBook({}) {
               </button>
             </div>}
         <div className="" ref={ref}>
-          
-          
               {isFullscreen &&
                 <div  className="flex justify-center" style={{overflow : "hidden", background : "black"}}>      
-              
                     {width && height&& (
                       <HTMLFlipBook
                           onFlip={(e) => console.log("flip", e)}
