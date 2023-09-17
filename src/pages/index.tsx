@@ -158,21 +158,22 @@ export default function MyBook({}) {
       videoRef9.current?.pause();
       videoRef10.current?.pause();
 
-      videoRef13.current!.currentTime = 0;
-      videoRef14.current!.currentTime = 0;
-      videoRef13.current?.pause();
-      videoRef14.current?.pause();
+      // videoRef13.current!.currentTime = 0;
+      // videoRef14.current!.currentTime = 0;
+      // videoRef13.current?.pause();
+      // videoRef14.current?.pause();
 
-    } else if (currentPage === 7) {
+    } 
+    // else if (currentPage === 7) {
 
-      videoRef13.current?.play();
-      videoRef14.current?.play();
+    //   videoRef13.current?.play();
+    //   videoRef14.current?.play();
 
-      videoRef11.current!.currentTime = 0;
-      videoRef12.current!.currentTime = 0;
-      videoRef11.current?.pause();
-      videoRef12.current?.pause();
-    }
+    //   videoRef11.current!.currentTime = 0;
+    //   videoRef12.current!.currentTime = 0;
+    //   videoRef11.current?.pause();
+    //   videoRef12.current?.pause();
+    // }
   }, [currentPage]);
 
   useEffect(() => {
@@ -436,7 +437,7 @@ export default function MyBook({}) {
                   ></video>                  
                 </div>
                 {/* 7 page */}
-                <div>
+                {/* <div>
                   <video
                     src="./7-1.mp4"
                     loop
@@ -455,7 +456,7 @@ export default function MyBook({}) {
                     ref={videoRef14}
                     onCanPlayThrough={() => setVideo14Ready(true)}
                   ></video>                  
-                </div>                                                                                
+                </div>                                                                                 */}
               </HTMLFlipBook>
             )}
           </div>
