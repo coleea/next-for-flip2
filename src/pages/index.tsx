@@ -25,8 +25,7 @@ export default function MyBook({}) {
     if(isFullscreen && window) {
       setWidth(window.outerWidth)
       setHeight(window.outerHeight)
-      const widthRatio = window.innerWidth / 842
-      // 1190
+      
     }
     if(ref.current) {
       // ref.current.requestFullscreen()
