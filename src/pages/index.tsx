@@ -1,12 +1,31 @@
-
 import { useEffect, useRef, useState } from "react";
 import HTMLFlipBook from "react-pageflip";
-import {PageFlip} from 'page-flip';
+import { fromEvent } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
+// import {PageFlip} from 'page-flip';
+
+
+// function debounce(func, wait) {
+//   let timeout;
+//   return function executedFunction(...args) {
+//       const later = () => {
+//           clearTimeout(timeout);
+//           func(...args);
+//       };
+//       clearTimeout(timeout);
+//       timeout = setTimeout(later, wait);
+//   };
+// }
+
 
 export default function MyBook({}) {
 
+  const lastTimeOfAudioPlayed = useRef<number>(new Date().getTime());
+
   const ref = useRef<HTMLDivElement>(null);
+  const audioRef = useRef<HTMLAudioElement>(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [currentPage, setcurrentPage] = useState(0);
 
   const [width, setWidth] = useState<number | null>(null);
   const [height, setHeight] = useState<number | null>(null);
@@ -15,134 +34,398 @@ export default function MyBook({}) {
   const videoRef2 = useRef<HTMLVideoElement>(null);
   const videoRef3 = useRef<HTMLVideoElement>(null);
   const videoRef4 = useRef<HTMLVideoElement>(null);
+  const videoRef5 = useRef<HTMLVideoElement>(null);
+  const videoRef6 = useRef<HTMLVideoElement>(null);
+  const videoRef7 = useRef<HTMLVideoElement>(null);
+  const videoRef8 = useRef<HTMLVideoElement>(null);
+  const videoRef9 = useRef<HTMLVideoElement>(null);
+  const videoRef10 = useRef<HTMLVideoElement>(null);
+  const videoRef11 = useRef<HTMLVideoElement>(null);
+  const videoRef12 = useRef<HTMLVideoElement>(null);
+  const videoRef13 = useRef<HTMLVideoElement>(null);
+  const videoRef14 = useRef<HTMLVideoElement>(null);
 
   const [video1Ready, setVideo1Ready] = useState(false);
   const [video2Ready, setVideo2Ready] = useState(false);
   const [video3Ready, setVideo3Ready] = useState(false);
   const [video4Ready, setVideo4Ready] = useState(false);
+  const [video5Ready, setVideo5Ready] = useState(false);
+  const [video6Ready, setVideo6Ready] = useState(false);
+  const [video7Ready, setVideo7Ready] = useState(false);
+  const [video8Ready, setVideo8Ready] = useState(false);
+  const [video9Ready, setVideo9Ready] = useState(false);
+  const [video10Ready, setVideo10Ready] = useState(false);
+  const [video11Ready, setVideo11Ready] = useState(false);
+  const [video12Ready, setVideo12Ready] = useState(false);
+  const [video13Ready, setVideo13Ready] = useState(false);
+  const [video14Ready, setVideo14Ready] = useState(false);
 
   useEffect(() => {
-    
-    setTimeout(() => { 
-
-      if(isFullscreen && document.fullscreenElement && window) {
-        if(window.outerWidth > window.outerHeight) {
-          setWidth(window.outerWidth)
-          setHeight(window.outerHeight)
+    setTimeout(() => {
+      if (isFullscreen && document.fullscreenElement && window) {
+        if (window.outerWidth > window.outerHeight) {
+          setWidth(window.outerWidth);
+          setHeight(window.outerHeight);
         } else {
-          setWidth(window.outerHeight)
-          setHeight(window.outerWidth)
+          setWidth(window.outerHeight);
+          setHeight(window.outerWidth);
         }
       }
-      if(ref.current) {
-        // ref.current.requestFullscreen()
-        // Failed to execute 'requestFullscreen' on 'Element': API can only be initiated by a user gesture.
-      }
-
-    }, 500)
+    }, 500);
   }, [isFullscreen]);
 
   useEffect(() => {
-    if(video1Ready && video2Ready) {
-      videoRef1.current?.play()
-      videoRef2.current?.play()
+    if (currentPage === 1) {
+      videoRef1.current?.play();
+      videoRef2.current?.play();
+
+      videoRef3.current!.currentTime = 0;
+      videoRef4.current!.currentTime = 0;
+      videoRef3.current?.pause();
+      videoRef4.current?.pause();
+
+    } else if (currentPage === 2) {
+
+      videoRef3.current?.play();
+      videoRef4.current?.play();
+
+      videoRef1.current!.currentTime = 0;
+      videoRef2.current!.currentTime = 0;
+      videoRef1.current?.pause();
+      videoRef2.current?.pause();
+
+      videoRef5.current!.currentTime = 0;
+      videoRef6.current!.currentTime = 0;
+      videoRef5.current?.pause();
+      videoRef6.current?.pause();
+
+    } else if (currentPage === 3) {
+
+      videoRef5.current?.play();
+      videoRef6.current?.play();
+
+      videoRef3.current!.currentTime = 0;
+      videoRef4.current!.currentTime = 0;
+      videoRef3.current?.pause();
+      videoRef4.current?.pause();
+
+      videoRef7.current!.currentTime = 0;
+      videoRef8.current!.currentTime = 0;
+      videoRef7.current?.pause();
+      videoRef8.current?.pause();
+
+    } else if (currentPage === 4) {
+
+      videoRef7.current?.play();
+      videoRef8.current?.play();
+
+      videoRef5.current!.currentTime = 0;
+      videoRef6.current!.currentTime = 0;
+      videoRef5.current?.pause();
+      videoRef6.current?.pause();
+
+      videoRef9.current!.currentTime = 0;
+      videoRef10.current!.currentTime = 0;
+      videoRef9.current?.pause();
+      videoRef10.current?.pause();
+
+    } else if (currentPage === 5) {
+
+      videoRef9.current?.play();
+      videoRef10.current?.play();
+
+      videoRef7.current!.currentTime = 0;
+      videoRef8.current!.currentTime = 0;
+      videoRef7.current?.pause();
+      videoRef8.current?.pause();
+
+      videoRef11.current!.currentTime = 0;
+      videoRef12.current!.currentTime = 0;
+      videoRef11.current?.pause();
+      videoRef12.current?.pause();
+
+    } else if (currentPage === 6) {
+
+      videoRef11.current?.play();
+      videoRef12.current?.play();
+
+      videoRef9.current!.currentTime = 0;
+      videoRef10.current!.currentTime = 0;
+      videoRef9.current?.pause();
+      videoRef10.current?.pause();
+
+      videoRef13.current!.currentTime = 0;
+      videoRef14.current!.currentTime = 0;
+      videoRef13.current?.pause();
+      videoRef14.current?.pause();
+
+    } else if (currentPage === 7) {
+
+      videoRef13.current?.play();
+      videoRef14.current?.play();
+
+      videoRef11.current!.currentTime = 0;
+      videoRef12.current!.currentTime = 0;
+      videoRef11.current?.pause();
+      videoRef12.current?.pause();
     }
-  }, [video1Ready, video2Ready]);
- 
+  }, [currentPage]);
+
   useEffect(() => {
-    if(video3Ready && video4Ready) {
-      videoRef3.current?.play()
-      videoRef4.current?.play()
+    if (video1Ready && video2Ready) {
+      setcurrentPage(1);
     }
-  }, [video3Ready, video4Ready]);
+  }, [
+    video1Ready,
+    video2Ready,
+    video3Ready,
+    video4Ready,
+    video5Ready,
+    video6Ready,
+    video7Ready,
+    video8Ready,
+    video9Ready,
+    video10Ready,
+    video11Ready,
+    video12Ready,
+    video13Ready,
+    video14Ready,
+  ]);
 
   const doFullscreen = () => {
-    ref.current?.requestFullscreen()
-    setIsFullscreen(true)
-  }
+    ref.current?.requestFullscreen();
+    setIsFullscreen(true);
+  };
 
-  // if(height) {
-  //   alert(JSON.stringify({height}));
-  // }
-  
   return (
     <>
-            {!isFullscreen && <div className="flex justify-center p-8 m-4" onClick={doFullscreen}>
-              <button className="">
-                <h1 className="text-2xl font-extrabold bg-slate-200 ">
-                  FULL SCREEN
-                </h1>
-              </button>
-            </div>}
-        <div className="" ref={ref}>
-              {isFullscreen &&
-                <div  className="flex justify-center" style={{overflow : "hidden", background : "black"}}>      
-                    {width && height&& (
-                      <HTMLFlipBook
-                          onFlip={(e) => console.log("flip", e)}
-                          onUpdate={(e) => console.log("update", e)}
-                          onChangeState={(e) => {
-                            console.log("changeState", e)
-                            if(ref.current) {
-                              console.log(ref.current);
-                            }          
-                          }}
-                          onChangeOrientation={(e) => console.log("changeOrientation", e)}
-                          onInit={(e) => console.log("init", e)}
-                          // renderOnlyPageLengthChanged={false}
-                          width={height * 0.7075630252100841}
-                          height={height}
-                          // width={842/1.5}
-                          // height={1190/1.5}
-                          className={""}
-                          style={{}}
-                          startPage={0}
-                          size={"fixed"}
-                          minWidth={0}
-                          minHeight={0}
-                          maxWidth={0}
-                          maxHeight={0}
-                          drawShadow={false}
-                          flippingTime={1000}
-                          usePortrait={false}
-                          startZIndex={0}
-                          autoSize={false}
-                          maxShadowOpacity={0}
-                          mobileScrollSupport={false}
-                          clickEventForward={true} // Set the forward event of clicking on child elements (buttons, links)
-                          useMouseEvents={true} // Using mouse and touch events to page flipping
-                          swipeDistance={0}
-                          showPageCorners={true} // if this value is true, fold the corners of the book when the mouse pointer is over them.
-                          disableFlipByClick={true} // if this value is true, flipping by clicking on the whole book will be locked. Only on corners
-                          showCover={false}
-                        >
-                          <div className="demoPage">
-                            <video src="./1-1.mp4" loop autoPlay={video1Ready && video2Ready} muted ref={videoRef1}
-                            onCanPlayThrough={() => setVideo1Ready(true)}
-                            ></video>
-                          </div>
-                          <div className="demoPage">
-                            <video src="./1-2.mp4"  loop autoPlay={video1Ready && video2Ready} muted ref={videoRef2}
-                            onCanPlayThrough={() => setVideo2Ready(true)}
-                            ></video>
-                          </div>
-                          <div className="demoPage">
-                            <video src="./2-1.mp4"  loop autoPlay={video3Ready && video4Ready} muted ref={videoRef3}
-                            onCanPlayThrough={() => setVideo3Ready(true)}
-                            
-                            ></video>
-                          </div>
-                          <div className="demoPage">
-                            <video src="./2-2.mp4"  loop autoPlay={video3Ready && video4Ready} muted ref={videoRef4}
-                            onCanPlayThrough={() => setVideo4Ready(true)}
-                            
-                            ></video>
-                          </div>
-                      </HTMLFlipBook>
-                    )}
+      {!isFullscreen && (
+        <div className="flex justify-center p-8 m-4" onClick={doFullscreen}>
+          <button className="">
+            <h1 className="text-2xl font-extrabold bg-slate-200 ">
+              {`FULL SCREEN`}
+            </h1>
+          </button>
+        </div>
+      )}
+      <div className="" ref={ref}>
+        {isFullscreen && (
+          <div
+            className="flex justify-center"
+            style={{ overflow: "hidden", background: "black" }}
+          >
+            {width && height && (
+              <HTMLFlipBook
+                onFlip={(e) => {
+                  const modifiedPageNumber = e.data / 2 + 1;
+                  if (e.data === 0) {
+                    setcurrentPage(1);
+                  } else {
+                    setcurrentPage(modifiedPageNumber);
+                  }
+                  // console.log("flip", e);
+                }}
+                onChangeState={(e) => {
+                  // console.log("changeState", e);
+                  // if (ref.current) {
+                  //   console.log(ref.current);
+                  // }
+                  const currentTime = new Date().getTime()
+                  
+                  if (audioRef.current && currentTime > lastTimeOfAudioPlayed.current + 1000) {
+                    audioRef.current.play();
+                    lastTimeOfAudioPlayed.current = new Date().getTime();
+                  }
+                }}
+                // onUpdate={(e) => console.log("update", e)}
+                // onChangeOrientation={(e) => console.log("changeOrientation", e)}
+                // onInit={(e) => console.log("init", e)}
+                // renderOnlyPageLengthChanged={false}
+                width={height * 0.7075630252100841}
+                height={height}
+                className={""}
+                style={{}}
+                startPage={0}
+                size={"fixed"}
+                minWidth={0}
+                minHeight={0}
+                maxWidth={0}
+                maxHeight={0}
+                drawShadow={false}
+                flippingTime={1000}
+                usePortrait={false}
+                startZIndex={0}
+                autoSize={false}
+                maxShadowOpacity={0}
+                mobileScrollSupport={false}
+                clickEventForward={true} // Set the forward event of clicking on child elements (buttons, links)
+                useMouseEvents={true} // Using mouse and touch events to page flipping
+                swipeDistance={0}
+                showPageCorners={true} // if this value is true, fold the corners of the book when the mouse pointer is over them.
+                disableFlipByClick={true} // if this value is true, flipping by clicking on the whole book will be locked. Only on corners
+                showCover={false}
+              >
+                <div >
+                  <video
+                    src="./1-1.mp4"
+                    loop
+                    autoPlay={video1Ready && video2Ready}
+                    muted={!(currentPage === 1)}
+                    ref={videoRef1}
+                    onCanPlayThrough={() => setVideo1Ready(true)}
+                  ></video>
                 </div>
-              }
-          </div>            
+                <div >
+                  <video
+                    src="./1-2.mp4"
+                    loop
+                    autoPlay={video1Ready && video2Ready}
+                    muted
+                    ref={videoRef2}
+                    onCanPlayThrough={() => setVideo2Ready(true)}
+                  ></video>
+                </div>
+                <div>
+                  <video
+                    src="./2-1.mp4"
+                    loop
+                    autoPlay={false}
+                    muted={!(currentPage === 2)}
+                    ref={videoRef3}
+                    onCanPlayThrough={() => setVideo3Ready(true)}
+                  ></video>
+                </div>
+                <div >
+                  <video
+                    src="./2-2.mp4"
+                    loop
+                    autoPlay={false}
+                    muted
+                    ref={videoRef4}
+                    onCanPlayThrough={() => setVideo4Ready(true)}
+                  ></video>                  
+                </div>
+                {/* 3 page */}
+                <div>
+                  <video
+                    src="./1-1.mp4"
+                    loop
+                    autoPlay={false}
+                    muted={!(currentPage === 3)}
+                    ref={videoRef5}
+                    onCanPlayThrough={() => setVideo5Ready(true)}
+                  ></video>
+                </div>
+                <div >
+                  <video
+                    src="./1-2.mp4"
+                    loop
+                    autoPlay={false}
+                    muted
+                    ref={videoRef6}
+                    onCanPlayThrough={() => setVideo6Ready(true)}
+                  ></video>                  
+                </div>
+                {/* 4 page */}
+                <div>
+                  <video
+                    src="./2-1.mp4"
+                    loop
+                    autoPlay={false}
+                    muted={!(currentPage === 4)}
+                    ref={videoRef7}
+                    onCanPlayThrough={() => setVideo7Ready(true)}
+                  ></video>
+                </div>
+                <div >
+                  <video
+                    src="./2-2.mp4"
+                    loop
+                    autoPlay={false}
+                    muted
+                    ref={videoRef8}
+                    onCanPlayThrough={() => setVideo8Ready(true)}
+                  ></video>                  
+                </div>
+                {/* 5 page */}
+                <div>
+                  <video
+                    src="./1-1.mp4"
+                    loop
+                    autoPlay={false}
+                    muted={!(currentPage === 5)}
+                    ref={videoRef9}
+                    onCanPlayThrough={() => setVideo9Ready(true)}
+                  ></video>
+                </div>
+                <div >
+                  <video
+                    src="./1-2.mp4"
+                    loop
+                    autoPlay={false}
+                    muted
+                    ref={videoRef10}
+                    onCanPlayThrough={() => setVideo10Ready(true)}
+                  ></video>                  
+                </div>
+                {/* 6 page */}
+                <div>
+                  <video
+                    src="./2-1.mp4"
+                    loop
+                    autoPlay={false}
+                    muted={!(currentPage === 6)}
+                    ref={videoRef11}
+                    onCanPlayThrough={() => setVideo11Ready(true)}
+                  ></video>
+                </div>
+                <div >
+                  <video
+                    src="./2-2.mp4"
+                    loop
+                    autoPlay={false}
+                    muted
+                    ref={videoRef12}
+                    onCanPlayThrough={() => setVideo12Ready(true)}
+                  ></video>                  
+                </div>
+                {/* 7 page */}
+                <div>
+                  <video
+                    src="./1-1.mp4"
+                    loop
+                    autoPlay={false}
+                    muted={!(currentPage === 7)}
+                    ref={videoRef13}
+                    onCanPlayThrough={() => setVideo13Ready(true)}
+                  ></video>
+                </div>
+                <div >
+                  <video
+                    src="./1-2.mp4"
+                    loop
+                    autoPlay={false}
+                    muted
+                    ref={videoRef14}
+                    onCanPlayThrough={() => setVideo14Ready(true)}
+                  ></video>                  
+                </div>                                                                                
+              </HTMLFlipBook>
+            )}
+          </div>
+        )}
+        <audio controls ref={audioRef} className="hidden">
+          <source src="flip.wav" type="audio/wav"></source>
+          브라우저가 오디오 태그를 지원하지 않습니다.
+        </audio>
+      </div>
     </>
   );
 }
+
+// useEffect(() => {
+//   if(video3Ready && video4Ready) {
+//     // videoRef3.current?.play()
+//     // videoRef4.current?.play()
+//   }
+// }, [video3Ready, video4Ready]);
