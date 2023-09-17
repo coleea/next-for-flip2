@@ -6,6 +6,7 @@ import {PageFlip} from 'page-flip';
 export default function MyBook({}) {
 
   const ref = useRef<HTMLDivElement>(null);
+  const [isFullscreen, setIsFullscreen] = useState(false);
 
   const videoRef1 = useRef<HTMLVideoElement>(null);
   const videoRef2 = useRef<HTMLVideoElement>(null);
@@ -16,6 +17,13 @@ export default function MyBook({}) {
   const [video2Ready, setVideo2Ready] = useState(false);
   const [video3Ready, setVideo3Ready] = useState(false);
   const [video4Ready, setVideo4Ready] = useState(false);
+
+  useEffect(() => {
+    if(ref.current) {
+      // ref.current.requestFullscreen()
+      // Failed to execute 'requestFullscreen' on 'Element': API can only be initiated by a user gesture.
+    }
+  }, []);
 
   useEffect(() => {
     if(video1Ready && video2Ready) {
@@ -31,8 +39,18 @@ export default function MyBook({}) {
     }
   }, [video3Ready, video4Ready]);
 
+  const doFullscreen = () => {
+    ref.current?.requestFullscreen()
+    setIsFullscreen(true)
+  }
+
   return (
-    <div className="" style={{overflow : "hidden", background : "black"}}>
+    <div ref={ref} className="" style={{overflow : "hidden", background : "black"}}>      
+        {!isFullscreen && <div className="flex justify-center p-8 m-4" onClick={doFullscreen}>
+          <button className="bg-white">
+            FULL SCREEN
+          </button>
+        </div>}
         <HTMLFlipBook
             onFlip={(e) => console.log("flip", e)}
             onUpdate={(e) => console.log("update", e)}
