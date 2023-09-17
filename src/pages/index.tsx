@@ -52,6 +52,10 @@ export default function MyBook({}) {
     setIsFullscreen(true)
   }
 
+  if(height) {
+    alert(JSON.stringify({height}));
+  }
+  
   return (
     <>
             {!isFullscreen && <div className="flex justify-center p-8 m-4" onClick={doFullscreen}>
