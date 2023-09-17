@@ -57,9 +57,9 @@ export default function MyBook({}) {
     setIsFullscreen(true)
   }
 
-  if(height) {
-    alert(JSON.stringify({height}));
-  }
+  // if(height) {
+  //   alert(JSON.stringify({height}));
+  // }
   
   return (
     <>
