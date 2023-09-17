@@ -23,8 +23,8 @@ export default function MyBook({}) {
 
   useEffect(() => {
     if(window) {
-      setWidth(window.innerWidth)
-      setHeight(window.innerHeight)
+      setWidth(window.outerWidth)
+      setHeight(window.outerHeight)
       const widthRatio = window.innerWidth / 842
       // 1190
     }
