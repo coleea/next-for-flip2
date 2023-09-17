@@ -23,8 +23,13 @@ export default function MyBook({}) {
 
   useEffect(() => {
     if(isFullscreen && window) {
-      setWidth(window.outerWidth)
-      setHeight(window.outerHeight)
+      if(window.outerWidth > window.outerHeight) {
+        setWidth(window.outerWidth)
+        setHeight(window.outerHeight)
+      } else {
+        setWidth(window.outerHeight)
+        setHeight(window.outerWidth)
+      }
       
     }
     if(ref.current) {
