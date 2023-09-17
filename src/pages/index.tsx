@@ -2,30 +2,34 @@ import { useEffect, useRef, useState } from "react";
 import HTMLFlipBook from "react-pageflip";
 import { fromEvent } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
-// import {PageFlip} from 'page-flip';
 
-
-// function debounce(func, wait) {
-//   let timeout;
-//   return function executedFunction(...args) {
-//       const later = () => {
-//           clearTimeout(timeout);
-//           func(...args);
-//       };
-//       clearTimeout(timeout);
-//       timeout = setTimeout(later, wait);
-//   };
-// }
-
+type playtimeType = {
+  [key: number]: number
+}
+const PLAYTIME : playtimeType = {
+  1 : 23 * 1000 * 3,
+  2 : 23 * 1000 * 3,
+  3 : 23 * 1000 * 3,
+  4 : 23 * 1000 * 3,
+  5 : 23 * 1000 * 3,
+  6 : 23 * 1000 * 3,
+  7 : 23 * 1000 * 3,
+}
 
 export default function MyBook({}) {
 
   const lastTimeOfAudioPlayed = useRef<number>(new Date().getTime());
 
   const ref = useRef<HTMLDivElement>(null);
+  const flipBookRef = useRef(null);
+  const reservedTimerId = useRef<NodeJS.Timeout | null>(null);
+
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [currentPage, setcurrentPage] = useState(0);
+  const currentPageRef = useRef<number | null>(null);
+
+  const [isAllReady, setIsAllReady] = useState(false);
 
   const [width, setWidth] = useState<number | null>(null);
   const [height, setHeight] = useState<number | null>(null);
@@ -172,8 +176,15 @@ export default function MyBook({}) {
   }, [currentPage]);
 
   useEffect(() => {
-    if (video1Ready && video2Ready) {
+    if (
+      video1Ready && video2Ready && video3Ready && video4Ready &&
+      video5Ready && video6Ready && video7Ready && video8Ready &&
+      video9Ready && video10Ready && video11Ready && video12Ready &&
+      video13Ready && video14Ready
+      ) {
+      setIsAllReady(true);
       setcurrentPage(1);
+      currentPageRef.current = 1;
     }
   }, [
     video1Ready,
@@ -197,8 +208,31 @@ export default function MyBook({}) {
     setIsFullscreen(true);
   };
 
+  const goToMainpageAfterSomeTime = (pageThatIsPassed : number) => {
+    const pageTimeThreshold = PLAYTIME[pageThatIsPassed]
+    const timerId = setTimeout(() => {
+        console.log('setTimeout 콜됨');
+
+        if(currentPageRef.current === pageThatIsPassed) {
+            setcurrentPage(1);
+            currentPageRef.current = 1;
+            (flipBookRef.current as any).pageFlip().turnToPage(0);
+        }
+    }, pageTimeThreshold)
+    console.log('setTimeout 예약함');
+
+    reservedTimerId.current = timerId;
+  }
+
   return (
     <>
+      {/* {!isAllReady && (
+        <div className="flex justify-center p-8 m-4">
+            <button className="border-2 p-4 m-4 ">
+              NOW IMAGE LOADING...
+            </button>
+        </div>
+      )} */}
       {!isFullscreen && (
         <div className="flex justify-center p-8 m-4" onClick={doFullscreen}>
           <button className="">
@@ -216,14 +250,26 @@ export default function MyBook({}) {
           >
             {width && height && (
               <HTMLFlipBook
+                ref={flipBookRef}
                 onFlip={(e) => {
                   const modifiedPageNumber = e.data / 2 + 1;
                   if (e.data === 0) {
                     setcurrentPage(1);
+                    currentPageRef.current = 1;
+                    if(reservedTimerId.current) {
+                      clearTimeout(reservedTimerId.current);
+                      // reservedTimerId.current = null;
+                    }
+                    goToMainpageAfterSomeTime(1);
                   } else {
                     setcurrentPage(modifiedPageNumber);
+                    currentPageRef.current = modifiedPageNumber;
+                    if(reservedTimerId.current) {
+                      clearTimeout(reservedTimerId.current);
+                      // reservedTimerId.current = null;
+                    }                    
+                    goToMainpageAfterSomeTime(modifiedPageNumber);
                   }
-                  // console.log("flip", e);
                 }}
                 onChangeState={(e) => {
                   // console.log("changeState", e);
@@ -429,3 +475,18 @@ export default function MyBook({}) {
 //     // videoRef4.current?.play()
 //   }
 // }, [video3Ready, video4Ready]);
+
+// import {PageFlip} from 'page-flip';
+
+
+// function debounce(func, wait) {
+//   let timeout;
+//   return function executedFunction(...args) {
+//       const later = () => {
+//           clearTimeout(timeout);
+//           func(...args);
+//       };
+//       clearTimeout(timeout);
+//       timeout = setTimeout(later, wait);
+//   };
+// }
