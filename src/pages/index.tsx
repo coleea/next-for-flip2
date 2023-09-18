@@ -88,7 +88,6 @@ export default function MyBook({}) {
       videoRef3.current?.pause();
       videoRef4.current?.pause();
 
-
       Promise.all([videoRef1.current!.play(), videoRef2.current!.play()])
       .then(() => {
         // 두 비디오가 준비되면 requestAnimationFrame을 사용하여 동기화
@@ -100,9 +99,6 @@ export default function MyBook({}) {
       .catch((error) => {
         console.error("Error playing videos:", error);
       });
-  
-
-
     } else if (currentPage === 2) {
 
       videoRef3.current?.play();
@@ -227,8 +223,7 @@ export default function MyBook({}) {
       video1Ready && video2Ready && video3Ready && video4Ready &&
       video5Ready && video6Ready && video7Ready && video8Ready &&
       video9Ready && video10Ready && video11Ready && video12Ready 
-      // &&
-      // video13Ready && video14Ready
+      // && video13Ready && video14Ready
       ) {
       setIsAllReady(true);
       setcurrentPage(1);
@@ -267,20 +262,12 @@ export default function MyBook({}) {
             (flipBookRef.current as any).pageFlip().turnToPage(0);
         }
     }, pageTimeThreshold)
-    console.log('setTimeout 예약함');
-
     reservedTimerId.current = timerId;
   }
 
   return (
     <>
-      {/* {!isAllReady && (
-        <div className="flex justify-center p-8 m-4">
-            <button className="border-2 p-4 m-4 ">
-              NOW IMAGE LOADING...
-            </button>
-        </div>
-      )} */}
+
       {!isFullscreen && (
         <div className="flex justify-center p-8 m-4" onClick={doFullscreen}>
           <button className="">
@@ -516,25 +503,3 @@ export default function MyBook({}) {
     </>
   );
 }
-
-// useEffect(() => {
-//   if(video3Ready && video4Ready) {
-//     // videoRef3.current?.play()
-//     // videoRef4.current?.play()
-//   }
-// }, [video3Ready, video4Ready]);
-
-// import {PageFlip} from 'page-flip';
-
-
-// function debounce(func, wait) {
-//   let timeout;
-//   return function executedFunction(...args) {
-//       const later = () => {
-//           clearTimeout(timeout);
-//           func(...args);
-//       };
-//       clearTimeout(timeout);
-//       timeout = setTimeout(later, wait);
-//   };
-// }
