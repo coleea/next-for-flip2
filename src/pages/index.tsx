@@ -150,8 +150,8 @@ export default function MyBook({}) {
 
     } else if (currentPage === 5) {
 
-      videoRef9.current?.play();
-      videoRef10.current?.play();
+      // videoRef9.current?.play();
+      // videoRef10.current?.play();
 
       videoRef7.current!.currentTime = 0;
       videoRef8.current!.currentTime = 0;
@@ -162,6 +162,18 @@ export default function MyBook({}) {
       videoRef12.current!.currentTime = 0;
       videoRef11.current?.pause();
       videoRef12.current?.pause();
+
+      Promise.all([videoRef9.current!.play(), videoRef10.current!.play()])
+      .then(() => {
+        // 두 비디오가 준비되면 requestAnimationFrame을 사용하여 동기화
+        requestAnimationFrame(() => {
+          videoRef9.current!.currentTime = 0;
+          videoRef10.current!.currentTime = 0;
+        });
+      })
+      .catch((error) => {
+        console.error("Error playing videos:", error);
+      });
 
     } else if (currentPage === 6) {
 
