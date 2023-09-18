@@ -552,18 +552,18 @@ export default function MyBook({}) {
       </div>
         <div className="hidden">
           <video onClick={e => e.currentTarget.play()} preload={"auto"} src="./1-1.mp4"></video>
-          <video preload={"auto"} src="./1-2.mp4"></video>
-          <video preload={"auto"} src="./2-1.mp4"></video>
-          <video preload={"auto"} src="./2-2.mp4"></video>
-          <video preload={"auto"} src="./3-1.mp4"></video>
-          <video preload={"auto"} src="./3-2.mp4"></video>
-          <video preload={"auto"} src="./4-1.mp4"></video>
-          <video preload={"auto"} src="./4-2.mp4"></video>
-          <video preload={"auto"} src="./5-1.mp4"></video>
-          <video preload={"auto"} src="./5-2.mp4"></video>
-          <video preload={"auto"} src="./6-1.mp4"></video>          
-          <video preload={"auto"} src="./6-2.mp4"></video>          
+          <video preload={"auto"} autoPlay muted src="./1-2.mp4"></video>
+          <video preload={"auto"} autoPlay muted src="./2-1.mp4"></video>
+          <video preload={"auto"} autoPlay muted src="./2-2.mp4"></video>
+          <video preload={"auto"} autoPlay muted src="./3-1.mp4"></video>
+          <video preload={"auto"} autoPlay muted src="./3-2.mp4"></video>
+          <video preload={"auto"} autoPlay muted src="./4-1.mp4"></video>
+          <video preload={"auto"} autoPlay muted src="./4-2.mp4"></video>
+          <video preload={"auto"} autoPlay muted src="./5-1.mp4"></video>
+          <video preload={"auto"} autoPlay muted src="./5-2.mp4"></video>
+          <video preload={"auto"} autoPlay muted src="./6-1.mp4"></video>          
+          <video preload={"auto"} autoPlay muted src="./6-2.mp4"></video>          
         </div>
-    </>
+      </>
   );
 }
