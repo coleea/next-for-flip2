@@ -363,6 +363,8 @@ export default function MyBook({}) {
               >
                 <div >
                   <video
+                    preload="auto"
+
                     src="./1-1.mp4"
                     // src="https://raw.githubusercontent.com/coleea/next-for-flip2/main/public/1-1.mp4"
                     loop
@@ -374,6 +376,8 @@ export default function MyBook({}) {
                 </div>
                 <div >
                   <video
+                    preload="auto"
+
                     src="./1-2.mp4"
                     // src="https://raw.githubusercontent.com/coleea/next-for-flip2/main/public/1-2.mp4"
 
@@ -386,6 +390,8 @@ export default function MyBook({}) {
                 </div>
                 <div>
                   <video
+                    preload="auto"
+
                     src="./2-1.mp4"
                     loop
                     autoPlay={false}
@@ -396,6 +402,8 @@ export default function MyBook({}) {
                 </div>
                 <div >
                   <video
+                    preload="auto"
+
                     src="./2-2.mp4"
                     // src="https://raw.githubusercontent.com/coleea/next-for-flip2/main/public/2-2.mp4"
                     loop
@@ -408,6 +416,8 @@ export default function MyBook({}) {
                 {/* 3 page */}
                 <div>
                   <video
+                    preload="auto"
+
                     src="./3-1.mp4"
                     // src="https://raw.githubusercontent.com/coleea/next-for-flip2/main/public/3-1.mp4"
                     loop
@@ -419,6 +429,8 @@ export default function MyBook({}) {
                 </div>
                 <div >
                   <video
+                    preload="auto"
+
                     src="./3-2.mp4"
                     // src="https://raw.githubusercontent.com/coleea/next-for-flip2/main/public/3-2.mp4"
 
@@ -432,6 +444,8 @@ export default function MyBook({}) {
                 {/* 4 page */}
                 <div>
                   <video
+                    preload="auto"
+
                     src="./4-1.mp4"
                     // src="https://raw.githubusercontent.com/coleea/next-for-flip2/main/public/4-1.mp4"
 
@@ -444,6 +458,7 @@ export default function MyBook({}) {
                 </div>
                 <div >
                   <video
+                    preload="auto"
                     src="./4-2.mp4"
                     // src="https://raw.githubusercontent.com/coleea/next-for-flip2/main/public/4-2.mp4"
                     loop
@@ -456,6 +471,8 @@ export default function MyBook({}) {
                 {/* 5 page */}
                 <div>
                   <video
+                    preload="auto"
+
                     src="./5-1.mp4"
                     // src="https://raw.githubusercontent.com/coleea/next-for-flip2/main/public/5-1.mp4"
                     loop
@@ -467,6 +484,8 @@ export default function MyBook({}) {
                 </div>
                 <div >
                   <video
+                    preload="auto"
+
                     src="./5-2.mp4"
                     // src="https://raw.githubusercontent.com/coleea/next-for-flip2/main/public/5-2.mp4"
                     loop
@@ -479,6 +498,8 @@ export default function MyBook({}) {
                 {/* 6 page */}
                 <div>
                   <video
+                    preload="auto"
+
                     src="./6-1.mp4"
                     // src="https://raw.githubusercontent.com/coleea/next-for-flip2/main/public/6-1.mp4"
                     loop
@@ -490,6 +511,8 @@ export default function MyBook({}) {
                 </div>
                 <div >
                   <video
+                    preload="auto"
+
                     src="./6-2.mp4"
                     // src="https://raw.githubusercontent.com/coleea/next-for-flip2/main/public/6-2.mp4"
                     loop
