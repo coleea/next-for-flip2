@@ -185,17 +185,22 @@ export default function MyBook({}) {
       videoRef9.current?.pause();
       videoRef10.current?.pause();
 
-      Promise.all([videoRef11.current!.play(), videoRef12.current!.play()])
-      .then(() => {
-        // 두 비디오가 준비되면 requestAnimationFrame을 사용하여 동기화
-        requestAnimationFrame(() => {
-          videoRef11.current!.currentTime = 0;
-          videoRef12.current!.currentTime = 0;
+      if(video11Ready && video12Ready) {
+
+        Promise.all([videoRef11.current!.play(), videoRef12.current!.play()])
+        .then(() => {
+          // 두 비디오가 준비되면 requestAnimationFrame을 사용하여 동기화
+          requestAnimationFrame(() => {
+            videoRef11.current!.currentTime = 0;
+            videoRef12.current!.currentTime = 0;
+          });
+        })
+        .catch((error) => {
+          console.error("Error playing videos:", error);
         });
-      })
-      .catch((error) => {
-        console.error("Error playing videos:", error);
-      });
+      } else {
+        alert("비디오 로딩중입니다")
+      }
 
       // videoRef13.current!.currentTime = 0;
       // videoRef14.current!.currentTime = 0;
@@ -216,6 +221,8 @@ export default function MyBook({}) {
   }, [currentPage]);
 
   useEffect(() => {
+
+    
     if (
       video1Ready && video2Ready && video3Ready && video4Ready &&
       video5Ready && video6Ready && video7Ready && video8Ready &&
