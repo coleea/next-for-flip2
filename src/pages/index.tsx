@@ -363,7 +363,8 @@ export default function MyBook({}) {
               >
                 <div >
                   <video
-                    src="./1-1.mp4"
+                    // src="./1-1.mp4"
+                    src="https://raw.githubusercontent.com/coleea/next-for-flip2/main/public/1-1.mp4"
                     loop
                     autoPlay={video1Ready && video2Ready}
                     muted={!(currentPage === 1)}
@@ -373,7 +374,9 @@ export default function MyBook({}) {
                 </div>
                 <div >
                   <video
-                    src="./1-2.mp4"
+                    // src="./1-2.mp4"
+                    src="https://raw.githubusercontent.com/coleea/next-for-flip2/main/public/1-2.mp4"
+
                     loop
                     autoPlay={video1Ready && video2Ready}
                     muted
@@ -393,7 +396,8 @@ export default function MyBook({}) {
                 </div>
                 <div >
                   <video
-                    src="./2-2.mp4"
+                    // src="./2-2.mp4"
+                    src="https://raw.githubusercontent.com/coleea/next-for-flip2/main/public/2-2.mp4"
                     loop
                     autoPlay={false}
                     muted
@@ -404,7 +408,8 @@ export default function MyBook({}) {
                 {/* 3 page */}
                 <div>
                   <video
-                    src="./3-1.mp4"
+                    // src="./3-1.mp4"
+                    src="https://raw.githubusercontent.com/coleea/next-for-flip2/main/public/3-1.mp4"
                     loop
                     autoPlay={false}
                     muted={!(currentPage === 3)}
@@ -414,7 +419,9 @@ export default function MyBook({}) {
                 </div>
                 <div >
                   <video
-                    src="./3-2.mp4"
+                    // src="./3-2.mp4"
+                    src="https://raw.githubusercontent.com/coleea/next-for-flip2/main/public/3-2.mp4"
+
                     loop
                     autoPlay={false}
                     muted
@@ -425,7 +432,9 @@ export default function MyBook({}) {
                 {/* 4 page */}
                 <div>
                   <video
-                    src="./4-1.mp4"
+                    // src="./4-1.mp4"
+                    src="https://raw.githubusercontent.com/coleea/next-for-flip2/main/public/4-1.mp4"
+
                     loop
                     autoPlay={false}
                     muted={!(currentPage === 4)}
@@ -435,7 +444,8 @@ export default function MyBook({}) {
                 </div>
                 <div >
                   <video
-                    src="./4-2.mp4"
+                    // src="./4-2.mp4"
+                    src="https://raw.githubusercontent.com/coleea/next-for-flip2/main/public/4-2.mp4"
                     loop
                     autoPlay={false}
                     muted
@@ -446,7 +456,8 @@ export default function MyBook({}) {
                 {/* 5 page */}
                 <div>
                   <video
-                    src="./5-1.mp4"
+                    // src="./5-1.mp4"
+                    src="https://raw.githubusercontent.com/coleea/next-for-flip2/main/public/5-1.mp4"
                     loop
                     autoPlay={false}
                     muted={!(currentPage === 5)}
@@ -456,7 +467,8 @@ export default function MyBook({}) {
                 </div>
                 <div >
                   <video
-                    src="./5-2.mp4"
+                    // src="./5-2.mp4"
+                    src="https://raw.githubusercontent.com/coleea/next-for-flip2/main/public/5-2.mp4"
                     loop
                     autoPlay={false}
                     muted
@@ -467,7 +479,9 @@ export default function MyBook({}) {
                 {/* 6 page */}
                 <div>
                   <video
-                    src="./6-1.mp4"
+                    // src="./6-1.mp4"
+                    src="https://raw.githubusercontent.com/coleea/next-for-flip2/main/public/6-1.mp4"
+
                     loop
                     autoPlay={false}
                     muted={!(currentPage === 6)}
@@ -477,7 +491,8 @@ export default function MyBook({}) {
                 </div>
                 <div >
                   <video
-                    src="./6-2.mp4"
+                    // src="./6-2.mp4"
+                    src="https://raw.githubusercontent.com/coleea/next-for-flip2/main/public/6-2.mp4"
                     loop
                     autoPlay={false}
                     muted
