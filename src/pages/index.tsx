@@ -180,8 +180,9 @@ export default function MyBook({}) {
     if (
       video1Ready && video2Ready && video3Ready && video4Ready &&
       video5Ready && video6Ready && video7Ready && video8Ready &&
-      video9Ready && video10Ready && video11Ready && video12Ready &&
-      video13Ready && video14Ready
+      video9Ready && video10Ready && video11Ready && video12Ready 
+      // &&
+      // video13Ready && video14Ready
       ) {
       setIsAllReady(true);
       setcurrentPage(1);
@@ -200,8 +201,8 @@ export default function MyBook({}) {
     video10Ready,
     video11Ready,
     video12Ready,
-    video13Ready,
-    video14Ready,
+    // video13Ready,
+    // video14Ready,
   ]);
 
   const doFullscreen = () => {
