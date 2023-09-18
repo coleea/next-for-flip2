@@ -2,20 +2,19 @@ import { useEffect, useRef, useState } from "react";
 import HTMLFlipBook from "react-pageflip";
 
 type playtimeType = {
-  [key: number]: number
-}
-const PLAYTIME : playtimeType = {
-  1 : 23 * 1000 * 3,
-  2 : 23 * 1000 * 3,
-  3 : 23 * 1000 * 3,
-  4 : 23 * 1000 * 3,
-  5 : 23 * 1000 * 3,
-  6 : 23 * 1000 * 3,
-  7 : 23 * 1000 * 3,
-}
+  [key: number]: number;
+};
+const PLAYTIME: playtimeType = {
+  1: 23 * 1000 * 3,
+  2: 23 * 1000 * 3,
+  3: 23 * 1000 * 3,
+  4: 23 * 1000 * 3,
+  5: 23 * 1000 * 3,
+  6: 23 * 1000 * 3,
+  7: 23 * 1000 * 3,
+};
 
 export default function MyBook({}) {
-
   const lastTimeOfAudioPlayed = useRef<number>(new Date().getTime());
 
   const ref = useRef<HTMLDivElement>(null);
@@ -81,36 +80,50 @@ export default function MyBook({}) {
       // videoRef1.current?.play();
       // videoRef2.current?.play();
 
-      if(!(video1Ready && video2Ready))  {
-        alert("비디오가 준비상태가 아님")
+      if (!(video1Ready && video2Ready)) {
+        alert("비디오가 준비상태가 아님");
       }
 
-      console.log("videoRef1.current!.readyState", videoRef1.current!.readyState);
-      console.log("videoRef2.current!.readyState", videoRef2.current!.readyState);      
+      console.log(
+        "videoRef1.current!.readyState",
+        videoRef1.current!.readyState
+      );
+      console.log(
+        "videoRef2.current!.readyState",
+        videoRef2.current!.readyState
+      );
 
-      
       videoRef3.current!.currentTime = 0;
       videoRef4.current!.currentTime = 0;
       videoRef3.current?.pause();
       videoRef4.current?.pause();
 
       Promise.all([videoRef1.current!.play(), videoRef2.current!.play()])
-      .then(() => {
-        // 두 비디오가 준비되면 requestAnimationFrame을 사용하여 동기화
-        requestAnimationFrame(() => {
-          console.log('1페이지 동영상 재생 시도');
-          // videoRef1.current!.
-          console.log("videoRef1.current!.currentTime", videoRef1.current!.currentTime)
-          console.log("videoRef2.current!.currentTime", videoRef2.current!.currentTime)
+        .then(() => {
+
           videoRef1.current!.currentTime = 0;
           videoRef2.current!.currentTime = 0;
+          
+          // 두 비디오가 준비되면 requestAnimationFrame을 사용하여 동기화
+          // requestAnimationFrame(() => {
+          //   console.log("1페이지 동영상 재생 시도");
+          //   // videoRef1.current!.
+          //   console.log(
+          //     "videoRef1.current!.currentTime",
+          //     videoRef1.current!.currentTime
+          //   );
+          //   console.log(
+          //     "videoRef2.current!.currentTime",
+          //     videoRef2.current!.currentTime
+          //   );
+          //   videoRef1.current!.currentTime = 0;
+          //   videoRef2.current!.currentTime = 0;
+          // });
+        })
+        .catch((error) => {
+          console.error("Error playing videos:", error);
         });
-      })
-      .catch((error) => {
-        console.error("Error playing videos:", error);
-      });
     } else if (currentPage === 2) {
-
       videoRef3.current?.play();
       videoRef4.current?.play();
 
@@ -123,9 +136,7 @@ export default function MyBook({}) {
       videoRef6.current!.currentTime = 0;
       videoRef5.current?.pause();
       videoRef6.current?.pause();
-
     } else if (currentPage === 3) {
-
       videoRef5.current?.play();
       videoRef6.current?.play();
 
@@ -138,9 +149,7 @@ export default function MyBook({}) {
       videoRef8.current!.currentTime = 0;
       videoRef7.current?.pause();
       videoRef8.current?.pause();
-
     } else if (currentPage === 4) {
-
       videoRef7.current?.play();
       videoRef8.current?.play();
 
@@ -153,9 +162,7 @@ export default function MyBook({}) {
       videoRef10.current!.currentTime = 0;
       videoRef9.current?.pause();
       videoRef10.current?.pause();
-
     } else if (currentPage === 5) {
-
       // videoRef9.current?.play();
       // videoRef10.current?.play();
 
@@ -170,56 +177,67 @@ export default function MyBook({}) {
       videoRef12.current?.pause();
 
       Promise.all([videoRef9.current!.play(), videoRef10.current!.play()])
-      .then(() => {
-        // 두 비디오가 준비되면 requestAnimationFrame을 사용하여 동기화
-        requestAnimationFrame(() => {
-          videoRef9.current!.currentTime = 0;
-          videoRef10.current!.currentTime = 0;
-        });
-      })
-      .catch((error) => {
-        console.error("Error playing videos:", error);
-      });
-
-    } else if (currentPage === 6) {
-
-      // videoRef11.current?.play();
-      // videoRef12.current?.play();
-
-      videoRef9.current!.currentTime = 0;
-      videoRef10.current!.currentTime = 0;
-      videoRef9.current?.pause();
-      videoRef10.current?.pause();
-
-      if(video11Ready && video12Ready) {
-
-        Promise.all([videoRef11.current!.play(), videoRef12.current!.play()])
         .then(() => {
           // 두 비디오가 준비되면 requestAnimationFrame을 사용하여 동기화
-
           requestAnimationFrame(() => {
-            console.log('6페이지 동영상 재생 시도');
-            
-            console.log('videoRef11.current!.currentTime', videoRef11.current!.currentTime);
-            console.log('videoRef12.current!.currentTime', videoRef12.current!.currentTime);
-            
-            videoRef11.current!.currentTime = 0;
-            videoRef12.current!.currentTime = 0;
+            videoRef9.current!.currentTime = 0;
+            videoRef10.current!.currentTime = 0;
           });
         })
         .catch((error) => {
           console.error("Error playing videos:", error);
         });
+    } else if (currentPage === 6) {
+      // videoRef11.current?.play();
+      // videoRef12.current?.play();
+
+      if (videoRef9.current && videoRef10.current) {
+        videoRef9.current.pause();
+        videoRef10.current.pause();
+        videoRef9.current.currentTime = 0;
+        videoRef10.current.currentTime = 0;
+      }
+
+      if (video11Ready && video12Ready) {
+        Promise.all([videoRef11.current!.play(), videoRef12.current!.play()])
+          .then(() => {
+            // 두 비디오가 준비되면 requestAnimationFrame을 사용하여 동기화
+
+            videoRef11.current!.currentTime = 0;
+            videoRef12.current!.currentTime = 0;
+
+            // requestAnimationFrame(() => {
+            //   console.log("6페이지 동영상 재생 시도");
+
+            //   console.log(
+            //     "videoRef11.current!.currentTime",
+            //     videoRef11.current!.currentTime
+            //   );
+            //   console.log(
+            //     "videoRef12.current!.currentTime",
+            //     videoRef12.current!.currentTime
+            //   );
+
+            //   if (videoRef11.current && videoRef12.current) {
+            //     videoRef11.current.currentTime = 0;
+            //     videoRef12.current.currentTime = 0;
+            //   } else {
+            //     alert("videoRef11, videoRef12 current가 없음");
+            //   }
+            // });
+          })
+          .catch((error) => {
+            console.error("Error playing videos:", error);
+          });
       } else {
-        alert("비디오 로딩중입니다")
+        alert("비디오 로딩중입니다");
       }
 
       // videoRef13.current!.currentTime = 0;
       // videoRef14.current!.currentTime = 0;
       // videoRef13.current?.pause();
       // videoRef14.current?.pause();
-
-    } 
+    }
     // else if (currentPage === 7) {
 
     //   videoRef13.current?.play();
@@ -233,14 +251,21 @@ export default function MyBook({}) {
   }, [currentPage]);
 
   useEffect(() => {
-
-    
     if (
-      video1Ready && video2Ready && video3Ready && video4Ready &&
-      video5Ready && video6Ready && video7Ready && video8Ready &&
-      video9Ready && video10Ready && video11Ready && video12Ready 
+      video1Ready &&
+      video2Ready &&
+      video3Ready &&
+      video4Ready &&
+      video5Ready &&
+      video6Ready &&
+      video7Ready &&
+      video8Ready &&
+      video9Ready &&
+      video10Ready &&
+      video11Ready &&
+      video12Ready
       // && video13Ready && video14Ready
-      ) {
+    ) {
       setIsAllReady(true);
       setcurrentPage(1);
       currentPageRef.current = 1;
@@ -267,23 +292,22 @@ export default function MyBook({}) {
     setIsFullscreen(true);
   };
 
-  const goToMainpageAfterSomeTime = (pageThatIsPassed : number) => {
-    const pageTimeThreshold = PLAYTIME[pageThatIsPassed]
+  const goToMainpageAfterSomeTime = (pageThatIsPassed: number) => {
+    const pageTimeThreshold = PLAYTIME[pageThatIsPassed];
     const timerId = setTimeout(() => {
-        console.log('setTimeout 콜됨');
+      console.log("setTimeout 콜됨");
 
-        if(currentPageRef.current === pageThatIsPassed) {
-            setcurrentPage(1);
-            currentPageRef.current = 1;
-            (flipBookRef.current as any).pageFlip().turnToPage(0);
-        }
-    }, pageTimeThreshold)
+      if (currentPageRef.current === pageThatIsPassed) {
+        setcurrentPage(1);
+        currentPageRef.current = 1;
+        (flipBookRef.current as any).pageFlip().turnToPage(0);
+      }
+    }, pageTimeThreshold);
     reservedTimerId.current = timerId;
-  }
+  };
 
   return (
     <>
-
       {!isFullscreen && (
         <div className="flex justify-center p-8 m-4" onClick={doFullscreen}>
           <button className="">
@@ -307,7 +331,7 @@ export default function MyBook({}) {
                   if (e.data === 0) {
                     setcurrentPage(1);
                     currentPageRef.current = 1;
-                    if(reservedTimerId.current) {
+                    if (reservedTimerId.current) {
                       clearTimeout(reservedTimerId.current);
                       // reservedTimerId.current = null;
                     }
@@ -315,10 +339,10 @@ export default function MyBook({}) {
                   } else {
                     setcurrentPage(modifiedPageNumber);
                     currentPageRef.current = modifiedPageNumber;
-                    if(reservedTimerId.current) {
+                    if (reservedTimerId.current) {
                       clearTimeout(reservedTimerId.current);
                       // reservedTimerId.current = null;
-                    }                    
+                    }
                     goToMainpageAfterSomeTime(modifiedPageNumber);
                   }
                 }}
@@ -327,9 +351,12 @@ export default function MyBook({}) {
                   // if (ref.current) {
                   //   console.log(ref.current);
                   // }
-                  const currentTime = new Date().getTime()
-                  
-                  if (audioRef.current && currentTime > lastTimeOfAudioPlayed.current + 1000) {
+                  const currentTime = new Date().getTime();
+
+                  if (
+                    audioRef.current &&
+                    currentTime > lastTimeOfAudioPlayed.current + 1000
+                  ) {
                     audioRef.current.play();
                     lastTimeOfAudioPlayed.current = new Date().getTime();
                   }
@@ -362,10 +389,9 @@ export default function MyBook({}) {
                 disableFlipByClick={true} // if this value is true, flipping by clicking on the whole book will be locked. Only on corners
                 showCover={false}
               >
-                <div >
+                <div>
                   <video
                     preload="auto"
-
                     src="./1-1.mp4"
                     // src="https://raw.githubusercontent.com/coleea/next-for-flip2/main/public/1-1.mp4"
                     loop
@@ -375,10 +401,9 @@ export default function MyBook({}) {
                     onCanPlayThrough={() => setVideo1Ready(true)}
                   ></video>
                 </div>
-                <div >
+                <div>
                   <video
                     preload="auto"
-
                     src="./1-2.mp4"
                     // src="https://raw.githubusercontent.com/coleea/next-for-flip2/main/public/1-2.mp4"
 
@@ -392,7 +417,6 @@ export default function MyBook({}) {
                 <div>
                   <video
                     preload="auto"
-
                     src="./2-1.mp4"
                     loop
                     autoPlay={false}
@@ -401,10 +425,9 @@ export default function MyBook({}) {
                     onCanPlayThrough={() => setVideo3Ready(true)}
                   ></video>
                 </div>
-                <div >
+                <div>
                   <video
                     preload="auto"
-
                     src="./2-2.mp4"
                     // src="https://raw.githubusercontent.com/coleea/next-for-flip2/main/public/2-2.mp4"
                     loop
@@ -412,13 +435,12 @@ export default function MyBook({}) {
                     muted
                     ref={videoRef4}
                     onCanPlayThrough={() => setVideo4Ready(true)}
-                  ></video>                  
+                  ></video>
                 </div>
                 {/* 3 page */}
                 <div>
                   <video
                     preload="auto"
-
                     src="./3-1.mp4"
                     // src="https://raw.githubusercontent.com/coleea/next-for-flip2/main/public/3-1.mp4"
                     loop
@@ -428,10 +450,9 @@ export default function MyBook({}) {
                     onCanPlayThrough={() => setVideo5Ready(true)}
                   ></video>
                 </div>
-                <div >
+                <div>
                   <video
                     preload="auto"
-
                     src="./3-2.mp4"
                     // src="https://raw.githubusercontent.com/coleea/next-for-flip2/main/public/3-2.mp4"
 
@@ -440,13 +461,12 @@ export default function MyBook({}) {
                     muted
                     ref={videoRef6}
                     onCanPlayThrough={() => setVideo6Ready(true)}
-                  ></video>                  
+                  ></video>
                 </div>
                 {/* 4 page */}
                 <div>
                   <video
                     preload="auto"
-
                     src="./4-1.mp4"
                     // src="https://raw.githubusercontent.com/coleea/next-for-flip2/main/public/4-1.mp4"
 
@@ -457,7 +477,7 @@ export default function MyBook({}) {
                     onCanPlayThrough={() => setVideo7Ready(true)}
                   ></video>
                 </div>
-                <div >
+                <div>
                   <video
                     preload="auto"
                     src="./4-2.mp4"
@@ -467,13 +487,12 @@ export default function MyBook({}) {
                     muted
                     ref={videoRef8}
                     onCanPlayThrough={() => setVideo8Ready(true)}
-                  ></video>                  
+                  ></video>
                 </div>
                 {/* 5 page */}
                 <div>
                   <video
                     preload="auto"
-
                     src="./5-1.mp4"
                     // src="https://raw.githubusercontent.com/coleea/next-for-flip2/main/public/5-1.mp4"
                     loop
@@ -483,10 +502,9 @@ export default function MyBook({}) {
                     onCanPlayThrough={() => setVideo9Ready(true)}
                   ></video>
                 </div>
-                <div >
+                <div>
                   <video
                     preload="auto"
-
                     src="./5-2.mp4"
                     // src="https://raw.githubusercontent.com/coleea/next-for-flip2/main/public/5-2.mp4"
                     loop
@@ -494,13 +512,12 @@ export default function MyBook({}) {
                     muted
                     ref={videoRef10}
                     onCanPlayThrough={() => setVideo10Ready(true)}
-                  ></video>                  
+                  ></video>
                 </div>
                 {/* 6 page */}
                 <div>
                   <video
                     preload="auto"
-
                     src="./6-1.mp4"
                     // src="https://raw.githubusercontent.com/coleea/next-for-flip2/main/public/6-1.mp4"
                     loop
@@ -510,10 +527,9 @@ export default function MyBook({}) {
                     onCanPlayThrough={() => setVideo11Ready(true)}
                   ></video>
                 </div>
-                <div >
+                <div>
                   <video
                     preload="auto"
-
                     src="./6-2.mp4"
                     // src="https://raw.githubusercontent.com/coleea/next-for-flip2/main/public/6-2.mp4"
                     loop
@@ -521,7 +537,7 @@ export default function MyBook({}) {
                     muted
                     ref={videoRef12}
                     onCanPlayThrough={() => setVideo12Ready(true)}
-                  ></video>                  
+                  ></video>
                 </div>
                 {/* 7 page */}
                 {/* <div>
@@ -553,20 +569,24 @@ export default function MyBook({}) {
           브라우저가 오디오 태그를 지원하지 않습니다.
         </audio>
       </div>
-        <div className="hidden">
-          <video onClick={e => e.currentTarget.play()} preload={"auto"} src="./1-1.mp4"></video>
-          <video preload={"auto"} autoPlay muted src="./1-2.mp4"></video>
-          <video preload={"auto"} autoPlay muted src="./2-1.mp4"></video>
-          <video preload={"auto"} autoPlay muted src="./2-2.mp4"></video>
-          <video preload={"auto"} autoPlay muted src="./3-1.mp4"></video>
-          <video preload={"auto"} autoPlay muted src="./3-2.mp4"></video>
-          <video preload={"auto"} autoPlay muted src="./4-1.mp4"></video>
-          <video preload={"auto"} autoPlay muted src="./4-2.mp4"></video>
-          <video preload={"auto"} autoPlay muted src="./5-1.mp4"></video>
-          <video preload={"auto"} autoPlay muted src="./5-2.mp4"></video>
-          <video preload={"auto"} autoPlay muted src="./6-1.mp4"></video>          
-          <video preload={"auto"} autoPlay muted src="./6-2.mp4"></video>          
-        </div>
-      </>
+      <div className="hidden">
+        <video
+          onClick={(e) => e.currentTarget.play()}
+          preload={"auto"}
+          src="./1-1.mp4"
+        ></video>
+        <video preload={"auto"} autoPlay muted src="./1-2.mp4"></video>
+        <video preload={"auto"} autoPlay muted src="./2-1.mp4"></video>
+        <video preload={"auto"} autoPlay muted src="./2-2.mp4"></video>
+        <video preload={"auto"} autoPlay muted src="./3-1.mp4"></video>
+        <video preload={"auto"} autoPlay muted src="./3-2.mp4"></video>
+        <video preload={"auto"} autoPlay muted src="./4-1.mp4"></video>
+        <video preload={"auto"} autoPlay muted src="./4-2.mp4"></video>
+        <video preload={"auto"} autoPlay muted src="./5-1.mp4"></video>
+        <video preload={"auto"} autoPlay muted src="./5-2.mp4"></video>
+        <video preload={"auto"} autoPlay muted src="./6-1.mp4"></video>
+        <video preload={"auto"} autoPlay muted src="./6-2.mp4"></video>
+      </div>
+    </>
   );
 }
