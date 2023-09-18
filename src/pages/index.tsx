@@ -80,13 +80,28 @@ export default function MyBook({}) {
 
   useEffect(() => {
     if (currentPage === 1) {
-      videoRef1.current?.play();
-      videoRef2.current?.play();
+      // videoRef1.current?.play();
+      // videoRef2.current?.play();
 
       videoRef3.current!.currentTime = 0;
       videoRef4.current!.currentTime = 0;
       videoRef3.current?.pause();
       videoRef4.current?.pause();
+
+
+      Promise.all([videoRef1.current!.play(), videoRef2.current!.play()])
+      .then(() => {
+        // 두 비디오가 준비되면 requestAnimationFrame을 사용하여 동기화
+        requestAnimationFrame(() => {
+          videoRef1.current!.currentTime = 0;
+          videoRef2.current!.currentTime = 0;
+        });
+      })
+      .catch((error) => {
+        console.error("Error playing videos:", error);
+      });
+  
+
 
     } else if (currentPage === 2) {
 
@@ -150,13 +165,25 @@ export default function MyBook({}) {
 
     } else if (currentPage === 6) {
 
-      videoRef11.current?.play();
-      videoRef12.current?.play();
+      // videoRef11.current?.play();
+      // videoRef12.current?.play();
 
       videoRef9.current!.currentTime = 0;
       videoRef10.current!.currentTime = 0;
       videoRef9.current?.pause();
       videoRef10.current?.pause();
+
+      Promise.all([videoRef11.current!.play(), videoRef12.current!.play()])
+      .then(() => {
+        // 두 비디오가 준비되면 requestAnimationFrame을 사용하여 동기화
+        requestAnimationFrame(() => {
+          videoRef11.current!.currentTime = 0;
+          videoRef12.current!.currentTime = 0;
+        });
+      })
+      .catch((error) => {
+        console.error("Error playing videos:", error);
+      });
 
       // videoRef13.current!.currentTime = 0;
       // videoRef14.current!.currentTime = 0;
