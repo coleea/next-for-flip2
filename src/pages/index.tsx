@@ -1,7 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import HTMLFlipBook from "react-pageflip";
-import { fromEvent } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
 
 type playtimeType = {
   [key: number]: number
@@ -552,6 +550,20 @@ export default function MyBook({}) {
           브라우저가 오디오 태그를 지원하지 않습니다.
         </audio>
       </div>
+        <div className="hidden">
+          <video onClick={e => e.currentTarget.play()} preload={"auto"} src="./1-1.mp4"></video>
+          <video preload={"auto"} src="./1-2.mp4"></video>
+          <video preload={"auto"} src="./2-1.mp4"></video>
+          <video preload={"auto"} src="./2-2.mp4"></video>
+          <video preload={"auto"} src="./3-1.mp4"></video>
+          <video preload={"auto"} src="./3-2.mp4"></video>
+          <video preload={"auto"} src="./4-1.mp4"></video>
+          <video preload={"auto"} src="./4-2.mp4"></video>
+          <video preload={"auto"} src="./5-1.mp4"></video>
+          <video preload={"auto"} src="./5-2.mp4"></video>
+          <video preload={"auto"} src="./6-1.mp4"></video>          
+          <video preload={"auto"} src="./6-2.mp4"></video>          
+        </div>
     </>
   );
 }
