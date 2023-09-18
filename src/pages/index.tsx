@@ -83,6 +83,10 @@ export default function MyBook({}) {
       // videoRef1.current?.play();
       // videoRef2.current?.play();
 
+      if(!(video1Ready && video2Ready))  {
+        alert("비디오가 준비상태가 아님")
+      }
+      
       videoRef3.current!.currentTime = 0;
       videoRef4.current!.currentTime = 0;
       videoRef3.current?.pause();
@@ -92,8 +96,10 @@ export default function MyBook({}) {
       .then(() => {
         // 두 비디오가 준비되면 requestAnimationFrame을 사용하여 동기화
         requestAnimationFrame(() => {
-          videoRef1.current!.currentTime = 0;
-          videoRef2.current!.currentTime = 0;
+          console.log('1페이지 동영상 재생 시도');
+          // videoRef1.current!.
+          videoRef1.current!.currentTime = 1000;
+          videoRef2.current!.currentTime = 1000;
         });
       })
       .catch((error) => {
@@ -186,7 +192,10 @@ export default function MyBook({}) {
         Promise.all([videoRef11.current!.play(), videoRef12.current!.play()])
         .then(() => {
           // 두 비디오가 준비되면 requestAnimationFrame을 사용하여 동기화
+
           requestAnimationFrame(() => {
+            console.log('동영상 재생 시도');
+            
             videoRef11.current!.currentTime = 0;
             videoRef12.current!.currentTime = 0;
           });
