@@ -102,8 +102,8 @@ export default function MyBook({}) {
           // videoRef1.current!.
           console.log("videoRef1.current!.currentTime", videoRef1.current!.currentTime)
           console.log("videoRef2.current!.currentTime", videoRef2.current!.currentTime)
-          // videoRef1.current!.currentTime = 0;
-          // videoRef2.current!.currentTime = 0;
+          videoRef1.current!.currentTime = 0;
+          videoRef2.current!.currentTime = 0;
         });
       })
       .catch((error) => {
@@ -198,7 +198,10 @@ export default function MyBook({}) {
           // 두 비디오가 준비되면 requestAnimationFrame을 사용하여 동기화
 
           requestAnimationFrame(() => {
-            console.log('동영상 재생 시도');
+            console.log('6페이지 동영상 재생 시도');
+            
+            console.log('videoRef11.current!.currentTime', videoRef11.current!.currentTime);
+            console.log('videoRef12.current!.currentTime', videoRef12.current!.currentTime);
             
             videoRef11.current!.currentTime = 0;
             videoRef12.current!.currentTime = 0;
