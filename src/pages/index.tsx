@@ -102,8 +102,10 @@ export default function MyBook({}) {
         requestAnimationFrame(() => {
           console.log('1페이지 동영상 재생 시도');
           // videoRef1.current!.
-          videoRef1.current!.currentTime = 1000;
-          videoRef2.current!.currentTime = 1000;
+          console.log("videoRef1.current!.currentTime", videoRef1.current!.currentTime)
+          console.log("videoRef2.current!.currentTime", videoRef2.current!.currentTime)
+          // videoRef1.current!.currentTime = 0;
+          // videoRef2.current!.currentTime = 0;
         });
       })
       .catch((error) => {
