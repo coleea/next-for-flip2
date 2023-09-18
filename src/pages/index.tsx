@@ -86,6 +86,10 @@ export default function MyBook({}) {
       if(!(video1Ready && video2Ready))  {
         alert("비디오가 준비상태가 아님")
       }
+
+      console.log("videoRef1.current!.readyState", videoRef1.current!.readyState);
+      console.log("videoRef2.current!.readyState", videoRef2.current!.readyState);      
+
       
       videoRef3.current!.currentTime = 0;
       videoRef4.current!.currentTime = 0;
